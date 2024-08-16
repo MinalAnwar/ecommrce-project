@@ -1,15 +1,20 @@
 import './App.css';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import LandingPage from "./pages/landing_page";
+import FAQs from './pages/Faq';
+import PrivacyPolicy from './pages/privacyPolicy';
 function App() {
   return (
-    <div className="App">
-        <div className="p-6">
-          <h2 className="text-2xl font-bold text-gray-800">minal</h2>
-          <p className="mt-2 text-gray-600">girl</p>
-          <button className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600">
-            Follow
-          </button>
-        </div>
+    <div className='App'>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage/>} />
+        <Route path="/Faqs" element={<FAQs/>}/>
+        <Route path="/privacypolicy" element={<PrivacyPolicy/>}/>  
+      </Routes>
+    </Router>
     </div>
+
   );
 }
 
