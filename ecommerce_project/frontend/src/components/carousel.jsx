@@ -41,7 +41,7 @@ const Carousel = () => {
         initial={{ scale: 1 }}
         animate={{ scale: 1.2 }}
         transition={{ duration: 0.5, ease: 'easeInOut' }}
-        whileHover={{ scale: 1.7 }}
+        whileHover={{ scale: 1.6 }}
         style={{ zIndex: 2 }} 
       >
         <img

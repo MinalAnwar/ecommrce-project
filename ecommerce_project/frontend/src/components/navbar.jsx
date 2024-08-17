@@ -69,7 +69,7 @@ const Navbar = (props) => {
           <ul className="flex flex-col md:flex-row mt-4 w-full">
             {['Women Basic', 'Jewelry', 'Watches', 'Bags', 'Fragrances', 'Formals', 'MakeUp', 'Shoes', 'Bridal Wear'].map(item => (
               <li key={item}>
-                <a className="md:py-4 md:px-4 py-3 px-10 block uppercase hover:bg-purple-100 transition-colors" href="#">
+                <a className="md:py-4 md:px-4 py-3 px-10 block uppercase transition-colors" href="#">
                   {item}
                 </a>
               </li>

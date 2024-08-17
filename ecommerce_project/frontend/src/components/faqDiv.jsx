@@ -18,7 +18,7 @@ const FaqDiv = (props) => {
                         </g>
                     </svg>
                 </div>
-                <div class="bg-zinc-100 p-4 w-full flex items-center">
+                <div class="bg-gray-200 rounded-lg p-4 w-full flex items-center">
                     <h4 class="text-lg leading-6 font-bold text-purple-500">{props.question}</h4>
                 </div>
             </div>
