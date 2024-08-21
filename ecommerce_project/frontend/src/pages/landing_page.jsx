@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import Carousel from '../components/carousel';
 import TertiryButton from '../components/tertiryButton';
 import Navbar from '../components/navbar';
@@ -5,8 +6,9 @@ import Images from '../components/lannding_page_images.jsx';
 import Footer from '../components/footer.jsx';
 
 function LandingPage() {
+  const navigate = useNavigate();
   return (
-    <div className="bg-gray-100">
+    <div className="">
       <Navbar />
       <div className="relative w-screen h-screen flex flex-col md:flex-row items-center justify-center overflow-hidden">
         <div
@@ -23,7 +25,7 @@ function LandingPage() {
             <h2 className="text-4xl md:text-5xl font-semibold text-white mt-4">
               Discover Your Signature Look
             </h2>
-            <TertiryButton text="Shop Now" onClick={() => alert('Button clicked!')} className="mt-8" />
+            <TertiryButton text="Shop Now" onClick={() =>navigate("/jewelLisitng")} className="mt-8" />
           </div>
         </div>
         <Carousel />

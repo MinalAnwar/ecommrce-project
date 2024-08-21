@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "axios": "^1.7.3"
+    "axios": "^1.7.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -9,8 +9,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.0",
+    "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
-    "autoprefixer": "^10.4.13"
+    "tailwindcss": "^3.3.0"
   }
 }

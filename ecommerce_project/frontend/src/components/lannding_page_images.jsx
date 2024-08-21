@@ -1,8 +1,10 @@
 import { useInView } from 'react-intersection-observer';
 import { useState, useCallback } from 'react';
 import TertiryButton from '../components/tertiryButton';
+import { useNavigate } from 'react-router-dom';
 
-const Images = () => {
+function Images (){
+    const navigate = useNavigate();
     const [animatedImages, setAnimatedImages] = useState({
         fashion: false,
         jewel1: false,
@@ -63,7 +65,7 @@ const Images = () => {
     return (
         <section className="py-14 bg-gray-100">
             <div className="container mx-auto px-4">
-                <h1 className="text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Women's Basic</h1>
+                <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Women's Basic</h1>
                 <div
                     ref={fashion}
                     className={`mb-8 relative transition-opacity duration-1000 ${animatedImages.fashion ? 'animate-slideInDown' : 'opacity-0'}`}
@@ -79,7 +81,7 @@ const Images = () => {
                     </div>
                 </div>
                 <div>
-                    <h1 className="text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Jewelry</h1>
+                    <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Jewelry</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div
                             ref={jewel1}
@@ -92,7 +94,7 @@ const Images = () => {
                                 className="w-full object-cover rounded-lg"
                             />
                             <div className="absolute bottom-4 left-4">
-                                <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng')} />
                             </div>
                         </div>
                         <div className="flex flex-col gap-6">
@@ -107,7 +109,7 @@ const Images = () => {
                                     className="w-full object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng')} />
                                 </div>
                             </div>
                             <div
@@ -120,14 +122,14 @@ const Images = () => {
                                     className="w-full h-80 object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng')} />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <h1 className="text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Wataches</h1>
+                    <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Wataches</h1>
                     <div
                         ref={watch}
                         className={`relative mb-8 ${animatedImages.watch ? 'animate-slideInDown' : ''}`}
@@ -144,7 +146,7 @@ const Images = () => {
                     </div>
                 </div>
                 <div>
-                    <h1 className="text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Bags</h1>
+                    <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Bags</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div className="flex flex-col gap-6">
                             <div
@@ -193,7 +195,7 @@ const Images = () => {
                     </div>
                 </div>
                 <div>
-                    <h1 className="text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Fragrances</h1>
+                    <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Fragrances</h1>
                     <div
                         className="mb-8 relative transition-opacity duration-1000"
                     >
@@ -213,7 +215,7 @@ const Images = () => {
                     </div>
                 </div>
                 <div>
-                    <h1 className="text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Formals</h1>
+                    <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Formals</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div
                             ref={coat1}
@@ -262,7 +264,7 @@ const Images = () => {
                     </div>
                 </div>
                 <div>
-                    <h1 className="text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">MakeUp</h1>
+                    <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">MakeUp</h1>
                     <div
                         className="mb-8 relative transition-opacity duration-1000"
                     >
@@ -282,7 +284,7 @@ const Images = () => {
                     </div>
                 </div>
                 <div>
-                    <h1 className="text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Shoes</h1>
+                    <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Shoes</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div
                             ref={shoes1}
@@ -331,7 +333,7 @@ const Images = () => {
                     </div>
                 </div>
                 <div>
-                    <h1 className="text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Bridal Wear</h1>
+                    <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Bridal Wear</h1>
                     <div
                         ref={formal}
                         className={`relative mb-8 flex justify-center ${animatedImages.formal ? 'animate-slideInLeft' : ''}`}

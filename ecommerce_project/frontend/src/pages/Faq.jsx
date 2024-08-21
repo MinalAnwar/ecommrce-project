@@ -1,7 +1,8 @@
 import Navbar from "../components/navbar";
 import FaqDiv from "../components/faqDiv";
 import Footer from "../components/footer";
-const FAQs = () => {
+
+function FAQs (){
     return (
         <div>
             <Navbar isNotLanding="True" />
@@ -10,7 +11,7 @@ const FAQs = () => {
 
                     <div class="text-center mt-8">
                         <h3 class="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-gray-900">
-                            Frequently Asked <span class="text-purple-500">Questions</span>
+                            Frequently Asked <span class="text-black">Questions</span>
                         </h3>
                     </div>
                     <div class="mt-20">

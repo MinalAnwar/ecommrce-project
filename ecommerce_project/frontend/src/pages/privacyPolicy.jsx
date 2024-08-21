@@ -2,20 +2,21 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 
-const PrivacyPolicy = () => {
+function PrivacyPolicy (){
   return (
-    <div><Navbar isNotLanding="True" />
+    <div>
+        <Navbar isNotLanding="True" />
         <div className="p-6 max-w-4xl mt-40 mx-auto">
-            <h1 className="text-5xl text-center font-bold mb-8 text-purple-500">Privacy Policy</h1>
+            <h1 className="text-5xl text-center font-bold mb-8 text-black">Privacy Policy</h1>
             <p className="mb-4 text-gray-700">
-                Welcome to Luxion. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="http://www.luxion.com" className="text-purple-500 hover:underline">www.luxion.com</a>, make a purchase, or interact with us in other ways.
+                Welcome to Luxion. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="http://www.luxion.com" className="text-black hover:underline">www.luxion.com</a>, make a purchase, or interact with us in other ways.
             </p>
             <p className="mb-4 text-gray-700">
                 Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not access the site.
             </p>
 
-            <h2 className="text-2xl font-semibold mb-2 text-purple-500">Information We Collect</h2>
-            <h3 className="text-xl font-medium mb-2 text-purple-500">Personal Information</h3>
+            <h2 className="text-2xl font-semibold mb-2 text-black">Information We Collect</h2>
+            <h3 className="text-xl font-medium mb-2 text-black">Personal Information</h3>
             <p className="mb-4 text-gray-700">
                 When you make a purchase or interact with us, we may collect personal information that includes:
                 <ul className="list-disc list-inside ml-6 mb-4 text-gray-700">
@@ -29,7 +30,7 @@ const PrivacyPolicy = () => {
                 </ul>
             </p>
 
-            <h3 className="text-xl font-medium mb-2 text-purple-500">Non-Personal Information</h3>
+            <h3 className="text-xl font-medium mb-2 text-black">Non-Personal Information</h3>
             <p className="mb-4 text-gray-700">
                 We may also collect non-personal information automatically when you visit our site, such as:
                 <ul className="list-disc list-inside ml-6 mb-4 text-gray-700">
@@ -41,7 +42,7 @@ const PrivacyPolicy = () => {
                 </ul>
             </p>
 
-            <h2 className="text-2xl font-semibold mb-2 text-purple-500">How We Use Your Information</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-black">How We Use Your Information</h2>
             <p className="mb-4 text-gray-700">
                 We use your personal information for the following purposes:
                 <ul className="list-disc list-inside ml-6 mb-4 text-gray-700">
@@ -54,12 +55,12 @@ const PrivacyPolicy = () => {
                 </ul>
             </p>
 
-            <h2 className="text-2xl font-semibold mb-2 text-purple-500">Cookies and Tracking Technologies</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-black">Cookies and Tracking Technologies</h2>
             <p className="mb-4 text-gray-700">
                 Our website uses cookies and similar tracking technologies to enhance your experience. Cookies are small data files placed on your device that help us remember your preferences and improve your browsing experience. You can manage your cookie preferences through your browser settings. Please note that disabling cookies may affect the functionality of our website.
             </p>
 
-            <h2 className="text-2xl font-semibold mb-2 text-purple-500">How We Share Your Information</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-black">How We Share Your Information</h2>
             <p className="mb-4 text-gray-700">
                 We do not sell or rent your personal information to third parties. We may share your information with:
                 <ul className="list-disc list-inside ml-6 mb-4 text-gray-700">
@@ -68,12 +69,12 @@ const PrivacyPolicy = () => {
                 </ul>
             </p>
 
-            <h2 className="text-2xl font-semibold mb-2 text-purple-500">Data Security</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-black">Data Security</h2>
             <p className="mb-4 text-gray-700">
                 We implement appropriate technical and organizational measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.
             </p>
 
-            <h2 className="text-2xl font-semibold mb-2 text-purple-500">Your Rights</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-black">Your Rights</h2>
             <p className="mb-4 text-gray-700">
                 Depending on your location, you may have the following rights regarding your personal information:
                 <ul className="list-disc list-inside ml-6 mb-4 text-gray-700">
@@ -84,17 +85,17 @@ const PrivacyPolicy = () => {
                 </ul>
             </p>
 
-            <h2 className="text-2xl font-semibold mb-2 text-purple-500">Changes to This Privacy Policy</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-black">Changes to This Privacy Policy</h2>
             <p className="mb-4 text-gray-700">
                 We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes by posting the updated Privacy Policy on our website with a revised effective date.
             </p>
 
-            <h2 className="text-2xl font-semibold mb-2 text-purple-500">Contact Us</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-black">Contact Us</h2>
             <p className="mb-4 text-gray-700">
                 If you have any questions or concerns about this Privacy Policy or our data practices, please contact us:
             </p>
             <ul className="list-disc list-inside ml-6 mb-4 text-gray-700">
-                <li><strong>Email</strong>: <a href="mailto:luxion@gmail.com" className="text-purple-500 hover:underline">luxion@gmail.com</a></li>
+                <li><strong>Email</strong>: <a href="mailto:luxion@gmail.com" className="text-black hover:underline">luxion@gmail.com</a></li>
                 <li><strong>Phone</strong>: +1 (123) 456-7890</li>
                 <li><strong>Address</strong>: 123 Fashion Street, Suite 456, Trendy City, CA 90210, USA</li>
             </ul>

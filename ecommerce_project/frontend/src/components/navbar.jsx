@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { UserIcon, ShoppingCartIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Navbar = (props) => {
+function Navbar (props){
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   const handleMenuToggle = () => {
     setIsMenuOpen(prevState => !prevState);
@@ -24,8 +25,8 @@ const Navbar = (props) => {
   return (
     <header
       className={`fixed w-full top-0 left-0 z-50 py-2 mb-8 flex flex-col ${
-        isScrolled ? 'bg-white' : 'bg-transparent text-white'
-      } transition-colors duration-300 ${!isScrolled && props.isNotLanding ? 'bg-white text-black' : ''}`}
+        props.isNotLanding ? 'bg-white text-black' : isScrolled ? 'bg-white text-black' : 'bg-transparent text-white'
+      } transition-colors duration-300`} 
     >
       <div className="flex items-center justify-between md:px-8 px-1">
         <Link to="/" className="text-5xl font-extrabold font-monoton">
@@ -37,10 +38,10 @@ const Navbar = (props) => {
             placeholder="Search..."
             className="hidden md:block w-64 px-4 py-2 rounded-2xl bg-white border-none focus:outline-none focus:ring-2 focus:ring-purple-300"
           />
-          <button>
+          <button onClick={()=>navigate("/login")}>
             <UserIcon className="h-6 w-6" />
           </button>
-          <button>
+          <button onClick={()=>navigate("/cart")}>
             <ShoppingCartIcon className="h-6 w-6" />
           </button>
           <button

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 
-const Footer = () => {
+function Footer (){
     const [showButton, setShowButton] = useState(false);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const Footer = () => {
     };
 
     return (
-        <div className="shadow-2xl bg-gray-100">
+        <div className="shadow-2xl">
             <div className="px-6 pt-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-14 lg:px-14">
                 <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
                     <div className="sm:col-span-2">

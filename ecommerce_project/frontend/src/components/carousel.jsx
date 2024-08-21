@@ -7,7 +7,7 @@ const cards = [
   { id: 3, image: '/static/Assets/images/carousel3.avif' },
 ];
 
-const Carousel = () => {
+function Carousel (){
   const [middleCardIndex, setMiddleCardIndex] = useState(0);
 
   const autoChangeCard = () => {

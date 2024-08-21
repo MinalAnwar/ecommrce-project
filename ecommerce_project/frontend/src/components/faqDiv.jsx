@@ -1,5 +1,5 @@
 
-const FaqDiv = (props) => {
+function FaqDiv (props){
     return (
         <div>
             <div class="flex flex-row items-start mb-5 transform transition-transform hover:-translate-y-2 hover:scale-105 transition-opacity duration-1000">
@@ -19,7 +19,7 @@ const FaqDiv = (props) => {
                     </svg>
                 </div>
                 <div class="bg-gray-200 rounded-lg p-4 w-full flex items-center">
-                    <h4 class="text-lg leading-6 font-bold text-purple-500">{props.question}</h4>
+                    <h4 class="text-lg leading-6 font-bold text-black">{props.question}</h4>
                 </div>
             </div>
 
