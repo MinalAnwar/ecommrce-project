@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import ProductCard from '../components/productListingCard';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import ProductCard from '../components/productCard';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import { setProducts } from '../redux/productSlice';
 
 const priceRanges = [
   { label: 'All', min: 0, max: Infinity },
@@ -13,12 +16,15 @@ const priceRanges = [
 ];
 
 function JewelListing (){
+  const dispatch = useDispatch()
+  const { category } = useParams(); 
+  const categoryId = category ? parseInt(category, 10) : null;
   const [selectedRange, setSelectedRange] = useState(priceRanges[0]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch('http://localhost:8000/api/listing/jewelListing/', {
           method: 'GET',
           headers: {
@@ -33,6 +39,7 @@ function JewelListing (){
         })
         .then(data => {
           setData(data);
+          dispatch(setProducts(data))
           setLoading(false);
         })
         .catch(error => {
@@ -44,7 +51,9 @@ function JewelListing (){
 
   const filteredProducts = data.filter(product => {
     const price = parseInt(product.price.replace('Rs', '').trim());
-    return price >= selectedRange.min && price <= selectedRange.max;
+    const isInPrice = price >= selectedRange.min && price <= selectedRange.max;
+    const isInCategory = categoryId !== 0 ? product.category === categoryId : true;
+    return isInPrice && isInCategory;
   });
 
   if (loading) return <div>Loading...</div>;
@@ -70,21 +79,25 @@ function JewelListing (){
             </select>
         </div>
         <section className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-20">
-            {filteredProducts.length > 0 ? (
-            filteredProducts.map((product, index) => (
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product, index) => {
+              const imageUrl = (product.images && product.images.length > 0) ? product.images[0].image : 'https://example.com/placeholder-image.jpg';
+
+              return (
                 <ProductCard
-                    key={product.productId} 
-                    id={product.productId}
-                    image={product.images[0].image}
-                    name={product.name}
-                    price={product.price}
-                    originalPrice={product.originalPrice}
-                    link={product.link}
+                  key={index}
+                  id={product.id}
+                  image={imageUrl}
+                  name={product.name}
+                  price={product.price}
+                  originalPrice={product.originalPrice}
+                  link={product.link}
                 />
-            ))
-            ) : (
-            <p>No products found</p>
-            )}
+              );
+            })
+          ) : (
+            <div className="mb-28 uppercase text-2xl font-extrabold">No Products Found</div>
+          )}
         </section>
         <Footer />
     </div>

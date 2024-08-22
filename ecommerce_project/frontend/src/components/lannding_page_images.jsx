@@ -77,7 +77,7 @@ function Images (){
                         className="w-full object-cover rounded-lg"
                     />
                     <div className="absolute bottom-4 left-4">
-                        <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                        <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/2')} />
                     </div>
                 </div>
                 <div>
@@ -94,7 +94,7 @@ function Images (){
                                 className="w-full object-cover rounded-lg"
                             />
                             <div className="absolute bottom-4 left-4">
-                                <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng')} />
+                                <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/1')} />
                             </div>
                         </div>
                         <div className="flex flex-col gap-6">
@@ -109,7 +109,7 @@ function Images (){
                                     className="w-full object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/1')} />
                                 </div>
                             </div>
                             <div
@@ -122,7 +122,7 @@ function Images (){
                                     className="w-full h-80 object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/1')} />
                                 </div>
                             </div>
                         </div>
@@ -141,7 +141,7 @@ function Images (){
                             className="w-full object-cover rounded-lg"
                         />
                         <div className="absolute bottom-4 left-4">
-                            <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                            <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/3')} />
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@ function Images (){
                                     className="w-full h-96 object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/4')} />
                                 </div>
                             </div>
                             <div
@@ -174,7 +174,7 @@ function Images (){
                                     className="w-full object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/4')} />
                                 </div>
                             </div>
                         </div>
@@ -189,7 +189,7 @@ function Images (){
                                 className="w-full object-cover rounded-lg"
                             />
                             <div className="absolute bottom-4 left-4">
-                                <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/4')} />
                             </div>
                         </div>
                     </div>
@@ -210,7 +210,7 @@ function Images (){
                             Your browser does not support the video tag.
                         </video>
                         <div className="absolute bottom-4 left-4">
-                            <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                            <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/5')} />
                         </div>
                     </div>
                 </div>
@@ -228,7 +228,7 @@ function Images (){
                                 className="object-cover rounded-lg"
                             />
                             <div className="absolute bottom-4 left-4">
-                                <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/6')} />
                             </div>
                         </div>
                         <div className="flex flex-col">
@@ -243,7 +243,7 @@ function Images (){
                                     className="object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/6')} />
                                 </div>
                             </div>
                             <div
@@ -257,7 +257,7 @@ function Images (){
                                     className="object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/6')} />
                                 </div>
                             </div>
                         </div>
@@ -279,7 +279,7 @@ function Images (){
                             Your browser does not support the video tag.
                         </video>
                         <div className="absolute bottom-4 left-4">
-                            <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                            <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/7')} />
                         </div>
                     </div>
                 </div>
@@ -297,7 +297,7 @@ function Images (){
                                 className="w-full object-cover rounded-lg"
                             />
                             <div className="absolute bottom-4 left-4">
-                                <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/8')} />
                             </div>
                         </div>
                         <div className="flex flex-col gap-6">
@@ -312,7 +312,7 @@ function Images (){
                                     className="w-full object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/8')} />
                                 </div>
                             </div>
                             <div
@@ -326,7 +326,7 @@ function Images (){
                                     className="w-full object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/8')} />
                                 </div>
                             </div>
                         </div>
@@ -345,7 +345,7 @@ function Images (){
                             className="object-cover rounded-lg"
                         />
                         <div className="md:ml-72 ml-0 absolute bottom-4 left-4">
-                            <TertiryButton text="See More" onClick={() => alert('See More clicked!')} />
+                            <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/9')} />
                         </div>
                     </div>
                 </div>

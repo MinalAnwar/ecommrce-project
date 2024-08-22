@@ -2,12 +2,12 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import TertiryButton from '../components/tertiryButton';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Billing (props){
     const navigate = useNavigate();
-    const taxes = 10;
-    const shipping = 10;
+    const location = useLocation();
+    const { totalItems, price } = location.state || {};
     return (
         <div>
             <Navbar isNotLanding="True" />
@@ -19,25 +19,25 @@ function Billing (props){
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block">
-                                            <span className="block text-xl mb-1 mt-4 font-md text-black">Name</span>
+                                            <span className="block text-xl mb-1 mt-4 font-md text-black" required>Name</span>
                                             <input type="text" className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Minal Anwar" id="name" required />
                                         </label>
                                     </div>
                                     <div>
                                         <label className="block">
-                                            <span className="block text-xl mb-1 mt-4 font-md text-black">Address</span>
+                                            <span className="block text-xl mb-1 mt-4 font-md text-black" required>Address</span>
                                             <input type="text" className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="123 Street, City, Country" id="address" required />
                                         </label>
                                     </div>
                                     <div>
                                         <label className="block">
-                                            <span className="block text-xl mb-1 font-md text-black">Email</span>
+                                            <span className="block text-xl mb-1 font-md text-black" required>Email</span>
                                             <input type="email" className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="example@example.com" id="email" required />
                                         </label>
                                     </div>
                                     <div>
                                         <label className="block">
-                                            <span className="block text-xl mb-1 font-md text-black">Phone Number</span>
+                                            <span className="block text-xl mb-1 font-md text-black" required>Phone Number</span>
                                             <input type="tel" className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700  focus:outline-none focus:shadow-outline" placeholder="0309-8886702" id="phone" required />
                                         </label>
                                     </div>
@@ -48,25 +48,17 @@ function Billing (props){
                             <div className="bg-white rounded-lg shadow-md p-6 h-full">
                                 <h2 className="text-3xl text-black font-bold mb-4">Summary</h2>
                                 <div className="flex text-gray-700  text-lg justify-between mb-2">
-                                    <span >Product Name</span>
-                                    <span>{props.name}</span>
-                                </div>
-                                <div className="flex text-gray-700  text-lg justify-between mb-2">
                                     <span>Price</span>
-                                    <span>{props.price}</span>
+                                    <span>{price}</span>
                                 </div>
-                                <div className="flex text-gray-700  text-lg justify-between mb-2">
-                                    <span>Quantity</span>
-                                    <span>{props.quantity}</span>
-                                </div>
-                                <div className="flex text-gray-700  text-lg justify-between mb-2">
-                                    <span>Shipping</span>
-                                    <span>{shipping}</span>
+                                <div className="flex text-gray-700 text-lg justify-between mb-8">
+                                    <span>Total Items</span>
+                                    <span>{totalItems}</span>
                                 </div>
                                 <hr className="my-2" />
                                 <div className="flex text-gray-700 text-lg justify-between mb-6">
                                     <span className="font-semibold">Total</span>
-                                    <span className="font-semibold">${parseInt(props.price) + parseInt(taxes) + parseInt(shipping)}</span>
+                                    <span className="font-semibold">{price}</span>
                                 </div>
                                 <TertiryButton text="Checkout" className="w-full" onClick={()=>navigate("/")} />
                             </div>

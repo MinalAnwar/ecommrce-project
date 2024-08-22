@@ -21,8 +21,8 @@ function App() {
         <Route path="signUp" element={<SignUp/>}/>
         <Route path="/Faqs" element={<FAQs/>}/>
         <Route path="/privacypolicy" element={<PrivacyPolicy/>}/>
-        <Route path="/jewelLisitng" element={<JewelListing/>}/>
-        <Route path="/product/:productId" element={<ProductDetail/>}/>
+        <Route path="/jewelLisitng/:category" element={<JewelListing/>}/>
+        <Route path="/product/:id" element={<ProductDetail/>}/>
         <Route path="/profile" element={<ProfilePage/>}/>
         <Route path="/cart" element={<ShopingCart/>}/>
         <Route path="/billing" element={<Billing/>}/>

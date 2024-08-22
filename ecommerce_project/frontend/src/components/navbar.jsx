@@ -36,7 +36,7 @@ function Navbar (props){
           <input
             type="text"
             placeholder="Search..."
-            className="hidden md:block w-64 px-4 py-2 rounded-2xl bg-white border-none focus:outline-none focus:ring-2 focus:ring-purple-300"
+            className="hidden md:block w-64 px-4 py-2 rounded-2xl text-black bg-white border-none focus:outline-none focus:ring-2 focus:ring-purple-300"
           />
           <button onClick={()=>navigate("/login")}>
             <UserIcon className="h-6 w-6" />

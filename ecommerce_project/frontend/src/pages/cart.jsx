@@ -1,13 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateQuantity, removeFromCart } from '../redux/cartSlice';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import TertiryButton from '../components/tertiryButton';
-import { useNavigate } from 'react-router-dom';
+import { TrashIcon } from '@heroicons/react/24/outline';
 
-function ShopingCart (props){
+function ShoppingCart() {
+    const cartItems = useSelector(state => state.cart.items);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const taxes = 10;
+
     const shipping = 10;
+
+    const increaseQuantity = (id) => {
+        const currentItem = cartItems.find(item => item.id === id);
+        if (currentItem) {
+            dispatch(updateQuantity({ productId: id, quantity: currentItem.quantity + 1 }));
+        }
+    };
+
+    const decreaseQuantity = (id) => {
+        const currentItem = cartItems.find(item => item.id === id);
+        if (currentItem) {
+            dispatch(updateQuantity({ productId: id, quantity: Math.max(1, currentItem.quantity - 1) }));
+        }
+    };
+
+    const handleRemove = (id) => {
+        dispatch(removeFromCart({ productId: id }));
+    };
+
+    const handleCheckout = () => {
+        navigate("/billing", { state: { price: totalPrice, totalItems: cartItems.length }});
+    };
+
+    const subtotal = cartItems.reduce((sum, item) => sum + parseFloat(item.price.replace('Rs', '')) * item.quantity, 0);
+    const taxes = subtotal * 0.17;
+    const totalPrice = subtotal + taxes + shipping;
+
     return (
         <div>
             <Navbar isNotLanding="True" />
@@ -24,26 +56,47 @@ function ShopingCart (props){
                                             <th className="text-left font-semibold">Price</th>
                                             <th className="text-left font-semibold">Quantity</th>
                                             <th className="text-left font-semibold">Total</th>
+                                            <th className="text-left font-semibold">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td className="py-4">
-                                                <div className="flex items-center">
-                                                    <img className="h-16 w-16 mr-4" src="https://via.placeholder.com/150" alt="Product" />
-                                                    <span className="font-semibold">Product name</span>
-                                                </div>
-                                            </td>
-                                            <td className="py-4">$19.99</td>
-                                            <td className="py-4">
-                                                <div className="flex items-center">
-                                                    <button className="border rounded-md py-2 px-4 mr-2">-</button>
-                                                    <span className="text-center w-8">1</span>
-                                                    <button className="border rounded-md py-2 px-4 ml-2">+</button>
-                                                </div>
-                                            </td>
-                                            <td className="py-4">$19.99</td>
-                                        </tr>
+                                        {cartItems.map(item => (
+                                            <tr key={item.id}>
+                                                <td className="py-4">
+                                                    <div className="flex items-center">
+                                                        <img className="h-16 w-16 mr-4" src={(item.images && item.images[0] && item.images[0].image) || item.image } alt="Product" />
+                                                        <span className="font-semibold">{item.name}</span>
+                                                    </div>
+                                                </td>
+                                                <td className="py-4">{item.price}</td>
+                                                <td className="py-4">
+                                                    <div className="flex items-center">
+                                                        <button
+                                                            className="border rounded-md py-2 px-4 mr-2"
+                                                            onClick={() => decreaseQuantity(item.id)}
+                                                        >
+                                                            -
+                                                        </button>
+                                                        <span className="text-center w-8">{item.quantity}</span>
+                                                        <button
+                                                            className="border rounded-md py-2 px-4 ml-2"
+                                                            onClick={() => increaseQuantity(item.id)}
+                                                        >
+                                                            +
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                                <td className="py-4">{(parseFloat(item.price.replace('Rs', '')) * item.quantity).toFixed(2)}Rs</td>
+                                                <td className="py-4">
+                                                    <button
+                                                        className="ml-2 text-black-500"
+                                                        onClick={() => handleRemove(item.id)}
+                                                    >
+                                                        <TrashIcon className="h-6 w-6" />
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>
@@ -51,36 +104,36 @@ function ShopingCart (props){
                         <div className="md:w-1/4">
                             <div className="bg-white rounded-lg shadow-md p-6 h-full">
                                 <h2 className="text-3xl font-bold mb-4">Summary</h2>
-                                <div className="flex text-gray-700  text-lg justify-between mb-2">
-                                    <span >Product Name</span>
-                                    <span>{props.name}</span>
+                                <div className="flex text-gray-700 text-lg justify-between mb-2">
+                                    <span>Total Items</span>
+                                    <span>{cartItems.length}</span>
                                 </div>
-                                <div className="flex text-gray-700  text-lg justify-between mb-2">
-                                    <span>Price</span>
-                                    <span>{props.price}</span>
+                                <div className="flex text-gray-700 text-lg justify-between mb-2">
+                                    <span>Subtotal</span>
+                                    <span>{subtotal.toFixed(2)}Rs</span>
                                 </div>
-                                <div className="flex text-gray-700  text-lg justify-between mb-2">
-                                    <span>Quantity</span>
-                                    <span>{props.quantity}</span>
+                                <div className="flex text-gray-700 text-lg justify-between mb-2">
+                                    <span>Taxes</span>
+                                    <span>{taxes.toFixed(2)}Rs</span>
                                 </div>
-                                <div className="flex text-gray-700  text-lg justify-between mb-2">
+                                <div className="flex text-gray-700 text-lg justify-between mb-2">
                                     <span>Shipping</span>
-                                    <span>{shipping}</span>
+                                    <span>{shipping}Rs</span>
                                 </div>
                                 <hr className="my-2" />
                                 <div className="flex text-gray-700 text-lg justify-between mb-2">
                                     <span className="font-semibold">Total</span>
-                                    <span className="font-semibold">${parseInt(props.price) + parseInt(taxes) + parseInt(shipping)}</span>
+                                    <span className="font-semibold">{totalPrice.toFixed(2)}Rs</span>
                                 </div>
-                                <TertiryButton text="Checkout" className="w-full" onClick={()=>navigate("/billing")} />
+                                <TertiryButton text="Checkout" className="w-full" onClick={handleCheckout} />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 }
 
-export default ShopingCart;
+export default ShoppingCart;
