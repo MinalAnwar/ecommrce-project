@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import LandingPage from "./pages/landing_page";
 import FAQs from './pages/Faq';
 import PrivacyPolicy from './pages/privacyPolicy';
-import JewelListing from './pages/jewelleryListing';
+import ProductListing from './pages/productListing';
 import ProductDetail from './pages/productDetailPage';
 import Login from './pages/login';
 import SignUp from './pages/signUp';
@@ -21,7 +21,7 @@ function App() {
         <Route path="signUp" element={<SignUp/>}/>
         <Route path="/Faqs" element={<FAQs/>}/>
         <Route path="/privacypolicy" element={<PrivacyPolicy/>}/>
-        <Route path="/jewelLisitng/:category" element={<JewelListing/>}/>
+        <Route path="/productListing/:category" element={<ProductListing/>}/>
         <Route path="/product/:id" element={<ProductDetail/>}/>
         <Route path="/profile" element={<ProfilePage/>}/>
         <Route path="/cart" element={<ShopingCart/>}/>

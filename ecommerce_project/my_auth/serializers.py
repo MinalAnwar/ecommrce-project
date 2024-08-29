@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
+
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     
@@ -15,12 +16,14 @@ class RegisterSerializer(serializers.ModelSerializer):
         return value 
       
     def create(self, validated_data):
-        """To create user object from validated data that is retured from automatic validation"""        
+        """To create user object from validated data that is retured from automatic validation"""
+        print(validated_data)        
         user = User.objects.create_user(
             username=validated_data['username'],
             email=validated_data['email'],
             password=validated_data['password']
         )
+        print(user)
         return user
     
 

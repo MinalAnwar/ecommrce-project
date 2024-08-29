@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { UserIcon, ShoppingCartIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { clearToken } from '../redux/jwtSlice';
 
-function Navbar (props){
+function Navbar(props) {
+  const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   const handleMenuToggle = () => {
@@ -12,7 +16,7 @@ function Navbar (props){
   };
 
   const handleScroll = () => {
-    setIsScrolled(window.scrollY > 80);
+    setIsScrolled(window.scrollY > 120);
   };
 
   useEffect(() => {
@@ -21,6 +25,22 @@ function Navbar (props){
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault(); 
+    if (searchQuery.trim()) {
+      navigate(`/productListing/${searchQuery}`);
+    }
+  };
+
+  const handleNavClick = (section) => {
+    navigate('/', { state: { section } });
+  };
+
+  const handleLogout = async () => {
+      dispatch(clearToken());
+      navigate('/');
+  };
 
   return (
     <header
@@ -33,15 +53,21 @@ function Navbar (props){
           Luxeon
         </Link>
         <div className="flex items-center space-x-2 md:space-x-4">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="hidden md:block w-64 px-4 py-2 rounded-2xl text-black bg-white border-none focus:outline-none focus:ring-2 focus:ring-purple-300"
-          />
-          <button onClick={()=>navigate("/login")}>
+          <form onSubmit={handleSearchSubmit} className="d-flex mx-auto" id="search-form">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search..."
+              className="hidden md:block w-64 px-4 py-2 rounded-2xl text-black bg-white border-none focus:outline-none focus:ring-2 focus:ring-purple-300"
+            />
+            <button type="submit" className="hidden">Search</button>
+          </form>
+          <button onClick={handleLogout} className="md:block hidden">LOGOUT</button>
+          <button onClick={() => navigate("/login")}>
             <UserIcon className="h-6 w-6" />
           </button>
-          <button onClick={()=>navigate("/cart")}>
+          <button onClick={() => navigate("/cart")}>
             <ShoppingCartIcon className="h-6 w-6" />
           </button>
           <button
@@ -68,11 +94,14 @@ function Navbar (props){
           isScrolled ? 'hidden' : ''
         }`}>
           <ul className="flex flex-col md:flex-row mt-4 w-full">
-            {['Women Basic', 'Jewelry', 'Watches', 'Bags', 'Fragrances', 'Formals', 'MakeUp', 'Shoes', 'Bridal Wear'].map(item => (
+            {['Women Basic', 'Jewelry', 'Watches', 'Bags', 'Fragrances', 'Formals', 'MakeUp', 'Shoes', 'Bridal Wear', 'Logout'].map((item, index) => (
               <li key={item}>
-                <a className="md:py-4 md:px-4 py-3 px-10 block uppercase transition-colors" href="#">
+                <button
+                  onClick={() => handleNavClick(`section${index + 1}`)}
+                  className="md:py-4 md:px-4 py-3 px-10 block uppercase transition-colors"
+                >
                   {item}
-                </a>
+                </button>
               </li>
             ))}
           </ul>
@@ -80,6 +109,6 @@ function Navbar (props){
       </div>
     </header>
   );
-};
+}
 
 export default Navbar;

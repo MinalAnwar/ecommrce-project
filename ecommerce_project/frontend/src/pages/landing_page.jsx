@@ -25,7 +25,7 @@ function LandingPage() {
             <h2 className="text-4xl md:text-5xl font-semibold text-white mt-4">
               Discover Your Signature Look
             </h2>
-            <TertiryButton text="Shop Now" onClick={() =>navigate("/jewelLisitng/0")} className="mt-8" />
+            <TertiryButton text="Shop Now" onClick={() =>navigate("/productListing/all")} className="mt-8" />
           </div>
         </div>
         <Carousel />

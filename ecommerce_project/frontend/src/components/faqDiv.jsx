@@ -23,7 +23,7 @@ function FaqDiv (props){
                 </div>
             </div>
 
-            <div class="flex flex-row items-start transform transition-transform hover:-translate-y-2 hover:scale-105 transition-opacity duration-1000">
+            <div class="flex flex-row items-start transform transition-transform hover:-translate-y-2 hover:scale-105 duration-1000">
                 <div class="group bg-gradient-to-br rounded-lg ml-1 from-purple-300 to-pink-200 p-5 px-10 w-full flex items-center">
                     <p class="text-gray-700 text-md">{props.answer}
                     </p>

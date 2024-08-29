@@ -24,7 +24,6 @@ const ProfilePage = () => {
 
   const handleSave = () => {
     setEditing(false);
-    // Perform save operation, for now, just log the data
     console.log("Saving data:", userData);
   };
 

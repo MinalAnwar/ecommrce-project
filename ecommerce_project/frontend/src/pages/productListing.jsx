@@ -15,17 +15,16 @@ const priceRanges = [
   { label: '4000 Rs and above', min: 4000, max: Infinity }
 ];
 
-function JewelListing (){
+function ProductListing (){
   const dispatch = useDispatch()
   const { category } = useParams(); 
-  const categoryId = category ? parseInt(category, 10) : null;
   const [selectedRange, setSelectedRange] = useState(priceRanges[0]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/listing/jewelListing/', {
+    fetch('http://localhost:8000/api/listing/productListing/', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -39,7 +38,9 @@ function JewelListing (){
         })
         .then(data => {
           setData(data);
-          dispatch(setProducts(data))
+          if(data){
+            dispatch(setProducts(data))
+          }
           setLoading(false);
         })
         .catch(error => {
@@ -52,8 +53,9 @@ function JewelListing (){
   const filteredProducts = data.filter(product => {
     const price = parseInt(product.price.replace('Rs', '').trim());
     const isInPrice = price >= selectedRange.min && price <= selectedRange.max;
-    const isInCategory = categoryId !== 0 ? product.category === categoryId : true;
-    return isInPrice && isInCategory;
+    const isInCategory = category !== "all" ? product.category_name.toLowerCase() === category.toLowerCase() : true;
+    const isSearched = category.toLowerCase() === product.name.toLowerCase() ? true : false;
+     return isInPrice && (isInCategory || isSearched);
   });
 
   if (loading) return <div>Loading...</div>;
@@ -104,5 +106,5 @@ function JewelListing (){
   );
 };
 
-export default JewelListing;
+export default ProductListing;
 

@@ -1,10 +1,26 @@
 import { useInView } from 'react-intersection-observer';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import TertiryButton from '../components/tertiryButton';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function Images (){
     const navigate = useNavigate();
+    const location = useLocation();
+    const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+    useEffect(() => {
+        setIsInitialLoad(false);
+    }, []);
+
+    useEffect(() => {
+        if (!isInitialLoad && location.state && location.state.section) {
+            const section = document.getElementById(location.state.section);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, [location.state]);
+
     const [animatedImages, setAnimatedImages] = useState({
         fashion: false,
         jewel1: false,
@@ -68,6 +84,7 @@ function Images (){
                 <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Women's Basic</h1>
                 <div
                     ref={fashion}
+                    id="section1" 
                     className={`mb-8 relative transition-opacity duration-1000 ${animatedImages.fashion ? 'animate-slideInDown' : 'opacity-0'}`}
                 >
                     <img
@@ -77,10 +94,10 @@ function Images (){
                         className="w-full object-cover rounded-lg"
                     />
                     <div className="absolute bottom-4 left-4">
-                        <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/2')} />
+                        <TertiryButton text="See More" onClick={() => navigate('/productListing/womenbasic')} />
                     </div>
                 </div>
-                <div>
+                <div id="section2" >
                     <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Jewelry</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div
@@ -94,7 +111,7 @@ function Images (){
                                 className="w-full object-cover rounded-lg"
                             />
                             <div className="absolute bottom-4 left-4">
-                                <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/1')} />
+                                <TertiryButton text="See More" onClick={() => navigate('/productListing/jewelery')} />
                             </div>
                         </div>
                         <div className="flex flex-col gap-6">
@@ -109,7 +126,7 @@ function Images (){
                                     className="w-full object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/1')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/productListing/jewelery')} />
                                 </div>
                             </div>
                             <div
@@ -122,13 +139,13 @@ function Images (){
                                     className="w-full h-80 object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/1')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/productListing/jewelery')} />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div id="section3" >
                     <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Wataches</h1>
                     <div
                         ref={watch}
@@ -141,11 +158,11 @@ function Images (){
                             className="w-full object-cover rounded-lg"
                         />
                         <div className="absolute bottom-4 left-4">
-                            <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/3')} />
+                            <TertiryButton text="See More" onClick={() => navigate('/productListing/watches')} />
                         </div>
                     </div>
                 </div>
-                <div>
+                <div id="section4" >
                     <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Bags</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div className="flex flex-col gap-6">
@@ -160,7 +177,7 @@ function Images (){
                                     className="w-full h-96 object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/4')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/productListing/bags')} />
                                 </div>
                             </div>
                             <div
@@ -174,7 +191,7 @@ function Images (){
                                     className="w-full object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/4')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/productListing/bags')} />
                                 </div>
                             </div>
                         </div>
@@ -189,12 +206,12 @@ function Images (){
                                 className="w-full object-cover rounded-lg"
                             />
                             <div className="absolute bottom-4 left-4">
-                                <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/4')} />
+                                <TertiryButton text="See More" onClick={() => navigate('/productListing/bags')} />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div id="section5" >
                     <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Fragrances</h1>
                     <div
                         className="mb-8 relative transition-opacity duration-1000"
@@ -210,11 +227,11 @@ function Images (){
                             Your browser does not support the video tag.
                         </video>
                         <div className="absolute bottom-4 left-4">
-                            <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/5')} />
+                            <TertiryButton text="See More" onClick={() => navigate('/productListing/fragrances')} />
                         </div>
                     </div>
                 </div>
-                <div>
+                <div id="section6" >
                     <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Formals</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div
@@ -228,7 +245,7 @@ function Images (){
                                 className="object-cover rounded-lg"
                             />
                             <div className="absolute bottom-4 left-4">
-                                <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/6')} />
+                                <TertiryButton text="See More" onClick={() => navigate('/productListing/formals')} />
                             </div>
                         </div>
                         <div className="flex flex-col">
@@ -243,7 +260,7 @@ function Images (){
                                     className="object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/6')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/productListing/formals')} />
                                 </div>
                             </div>
                             <div
@@ -257,13 +274,13 @@ function Images (){
                                     className="object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/6')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/productListing/formals')} />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div id="section7" >
                     <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">MakeUp</h1>
                     <div
                         className="mb-8 relative transition-opacity duration-1000"
@@ -279,11 +296,11 @@ function Images (){
                             Your browser does not support the video tag.
                         </video>
                         <div className="absolute bottom-4 left-4">
-                            <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/7')} />
+                            <TertiryButton text="See More" onClick={() => navigate('/productListing/makeup')} />
                         </div>
                     </div>
                 </div>
-                <div>
+                <div id="section8" >
                     <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Shoes</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div
@@ -297,7 +314,7 @@ function Images (){
                                 className="w-full object-cover rounded-lg"
                             />
                             <div className="absolute bottom-4 left-4">
-                                <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/8')} />
+                                <TertiryButton text="See More" onClick={() => navigate('/productListing/shoes')} />
                             </div>
                         </div>
                         <div className="flex flex-col gap-6">
@@ -312,7 +329,7 @@ function Images (){
                                     className="w-full object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/8')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/productListing/shoes')} />
                                 </div>
                             </div>
                             <div
@@ -326,13 +343,13 @@ function Images (){
                                     className="w-full object-cover rounded-lg"
                                 />
                                 <div className="absolute bottom-4 left-4">
-                                    <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/8')} />
+                                    <TertiryButton text="See More" onClick={() => navigate('/productListing/shoes')} />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div id="section9" >
                     <h1 className="text-3xl md:text-5xl text-center mb-7 uppercase font-monoton font-extrabold text-black">Bridal Wear</h1>
                     <div
                         ref={formal}
@@ -345,7 +362,7 @@ function Images (){
                             className="object-cover rounded-lg"
                         />
                         <div className="md:ml-72 ml-0 absolute bottom-4 left-4">
-                            <TertiryButton text="See More" onClick={() => navigate('/jewelLisitng/9')} />
+                            <TertiryButton text="See More" onClick={() => navigate('/productListing/bridalw')} />
                         </div>
                     </div>
                 </div>

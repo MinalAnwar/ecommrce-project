@@ -5,7 +5,7 @@ import { addToCart } from '../redux/cartSlice';
 
 function ProductCard({ id, image, brand, name, price, originalPrice }) {
   const dispatch = useDispatch();
-  const products = useSelector(state => state.products.products); // Move useSelector here
+  const products = useSelector(state => state.products.products);
 
   const handleAddToCart = (event) => {
     event.stopPropagation();
@@ -16,7 +16,7 @@ function ProductCard({ id, image, brand, name, price, originalPrice }) {
   };
 
   return (
-    <div className="relative lg:w-96 md:w-80 sm:w-64 w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <div className="relative lg:w-96 md:w-80 sm:w-64 w-72 bg-white shadow-md  rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
       <Link to={`/product/${id}`}>
         <img
           src={image}
@@ -34,8 +34,10 @@ function ProductCard({ id, image, brand, name, price, originalPrice }) {
               )}
             </div>
           </div>
-          <button
-            className="ml-4 p-2 rounded-full hover:bg-gray-200" // Adjusted the button styling
+        </div>
+      </Link>
+      <button
+            className="ml-4 p-2 rounded-full hover:bg-gray-200"
             onClick={handleAddToCart}
           >
             <svg
@@ -55,8 +57,6 @@ function ProductCard({ id, image, brand, name, price, originalPrice }) {
               />
             </svg>
           </button>
-        </div>
-      </Link>
     </div>
   );
 }

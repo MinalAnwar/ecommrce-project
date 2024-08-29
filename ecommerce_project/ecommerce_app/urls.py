@@ -1,7 +1,8 @@
-# auth/urls.py
 from django.urls import path
 from .views import *
+from . import views
 
 urlpatterns = [
-    path('jewelListing/', ListJewel.as_view(), name='jewelListing')
+    path('productListing/', ProductList.as_view(), name='productListing'),
+    path('search/', views.searching, name = 'search'),
 ]
