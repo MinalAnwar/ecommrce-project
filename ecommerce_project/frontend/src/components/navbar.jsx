@@ -10,7 +10,6 @@ function Navbar(props) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
-
   const handleMenuToggle = () => {
     setIsMenuOpen(prevState => !prevState);
   };
@@ -33,8 +32,18 @@ function Navbar(props) {
     }
   };
 
-  const handleNavClick = (section) => {
-    navigate('/', { state: { section } });
+  const generateUrl = (item) => {
+    return `/productListing/${item.replace(/\s+/g, '').toLowerCase()}`;
+  };
+
+  const handleNavClick = (section, item) => {
+    if(props.isNotLanding === "True"){
+      const url = generateUrl(item);
+      navigate(url);
+    }
+    else{
+      navigate('/', { state: { section } });
+    }
   };
 
   const handleLogout = async () => {
@@ -63,7 +72,6 @@ function Navbar(props) {
             />
             <button type="submit" className="hidden">Search</button>
           </form>
-          <button onClick={handleLogout} className="md:block hidden">LOGOUT</button>
           <button onClick={() => navigate("/login")}>
             <UserIcon className="h-6 w-6" />
           </button>
@@ -90,14 +98,12 @@ function Navbar(props) {
         } border-t md:border-t-0 border-white md:border-none`}
         id="menu"
       >
-        <nav className={`flex flex-col md:flex-row md:ml-4 items-center justify-center text-base w-full ${
-          isScrolled ? 'hidden' : ''
-        }`}>
-          <ul className="flex flex-col md:flex-row mt-4 w-full">
-            {['Women Basic', 'Jewelry', 'Watches', 'Bags', 'Fragrances', 'Formals', 'MakeUp', 'Shoes', 'Bridal Wear', 'Logout'].map((item, index) => (
+        <nav className={`flex flex-col md:flex-row md:ml-4 items-center justify-center text-base w-full`}>
+          <ul className={`flex flex-col md:flex-row mt-4 w-full ${isScrolled ? 'hidden' : ''}`}>
+            {['Women Basic', 'Jewelry', 'Watches', 'Bags', 'Fragrances', 'Formals', 'MakeUp', 'Shoes', 'Bridal Wear'].map((item, index) => (
               <li key={item}>
                 <button
-                  onClick={() => handleNavClick(`section${index + 1}`)}
+                  onClick={() => handleNavClick(`section${index + 1}`, item)}
                   className="md:py-4 md:px-4 py-3 px-10 block uppercase transition-colors"
                 >
                   {item}
@@ -105,6 +111,14 @@ function Navbar(props) {
               </li>
             ))}
           </ul>
+          {isMenuOpen && (
+            <button
+              onClick={handleLogout}
+              className="md:hidden py-3 px-10 mt-4 block uppercase transition-colors font-bold text-red-500"
+            >
+              LOGOUT
+            </button>
+          )}
         </nav>
       </div>
     </header>
